@@ -18,7 +18,7 @@ class Location(models.Model):
 	class Meta:
 		verbose_name = 'ubicacion'
 	latitude = models.FloatField('latitud')
-	length = models.FloatField('longitud')			
+	longitude = models.FloatField('longitud')			
 
 	created_at = models.DateTimeField(auto_now_add=True)
 	updated_at = models.DateTimeField(auto_now=True)
