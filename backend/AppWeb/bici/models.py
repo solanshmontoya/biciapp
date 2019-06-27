@@ -13,3 +13,15 @@ class Store(models.Model):
 	
 	def __str__(self):
 		return self.address
+
+class Location(models.Model):
+	class Meta:
+		verbose_name = 'ubicacion'
+	latitude = models.FloatField('latitud')
+	length = models.FloatField('longitud')			
+
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
+	
+	def __str__(self):
+		return self.latitude
