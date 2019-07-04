@@ -7,7 +7,7 @@ from .models import Store, Location
 class StoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Store
-        fields = ('description', 'address',)
+        fields = ('__all__')
 
 class LocationSerializer(serializers.ModelSerializer):
 	class Meta:
