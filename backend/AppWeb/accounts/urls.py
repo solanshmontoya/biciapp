@@ -9,11 +9,13 @@ from . import api, views, forms
 app_name = 'accounts'
 
 router = DefaultRouter()
-apipatterns = router.urls + [
+router.register(r'users', api.UsersViewSet, 'users')
+
+apipatterns = [
     path('registration/', api.CreateUserView.as_view()),
     path('users/me/', api.current_user),
-#    path('users/me/update/<int:pk>', api.UpdateUserView.as_view())
-]
+    path('users/me/update/<int:pk>/', api.UpdateUserView.as_view())
+] + router.urls
 
 password_reset_patterns = [
     path('done/', password_reset_complete, {

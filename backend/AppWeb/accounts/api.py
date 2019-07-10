@@ -19,7 +19,12 @@ def current_user(request):
     serializer = serializers.UserSerializer(request.user)
     return Response(serializer.data)
 
-# class UpdateUserView(generics.UpdateAPIView):
-#     model = User    
-#     serializer_class = serializers.UserSerializer
-#     queryset = User.objects.all()
+class UpdateUserView(generics.UpdateAPIView):
+     model = User    
+     serializer_class = serializers.UserSerializer
+     queryset = User.objects.all()
+
+class UsersViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = serializers.UserSerializer
+    
