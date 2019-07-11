@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Store(models.Model):
 	class Meta:
@@ -13,9 +14,24 @@ class Store(models.Model):
 	def __str__(self):
 		return self.address
 
+class Route(models.Model):
+	class Meta:
+		verbose_name = 'ruta'
+	user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name='usuario')
+	distance = models.FloatField('km')			
+	speed = models.FloatField('velocidad')			
+				
+
+	created_at = models.DateTimeField(auto_now_add=True)
+	updated_at = models.DateTimeField(auto_now=True)
+	
+	def __str__(self):
+		return str(self.id)	
+
 class Location(models.Model):
 	class Meta:
 		verbose_name = 'ubicacion'
+	route = models.ForeignKey(Route, related_name='routes', on_delete=models.CASCADE)
 	latitude = models.FloatField('latitud')
 	longitude = models.FloatField('longitud')			
 
@@ -23,4 +39,5 @@ class Location(models.Model):
 	updated_at = models.DateTimeField(auto_now=True)
 	
 	def __str__(self):
-		return self.latitude
+		return str(self.latitude)
+	
