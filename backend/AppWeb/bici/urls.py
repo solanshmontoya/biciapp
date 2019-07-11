@@ -8,6 +8,7 @@ from . import views, api
 router = DefaultRouter()
 router.register(r'stores', api.StoreViewSet, 'stores')
 router.register(r'locations', api.LocationViewSet, 'locations')
+router.register(r'routes', api.RouteViewSet, 'routes')
 
 urlpatterns = [
     path('', views.index, name='index'),

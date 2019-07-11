@@ -1,6 +1,6 @@
 from rest_framework.response import Response
-from .models import Store, Location
-from .serializers import StoreSerializer, LocationSerializer
+from .models import Store, Location, Route
+from .serializers import StoreSerializer, LocationSerializer, RouteSerializer
 from rest_framework import viewsets, permissions
 
 class StoreViewSet(viewsets.ModelViewSet):
@@ -10,3 +10,7 @@ class StoreViewSet(viewsets.ModelViewSet):
 class LocationViewSet(viewsets.ModelViewSet):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer    
+
+class RouteViewSet(viewsets.ModelViewSet):
+    queryset = Route.objects.all()
+    serializer_class = RouteSerializer
